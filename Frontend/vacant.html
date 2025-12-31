@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vacant Room Application</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f0f6ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #004aad;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #004aad;
+            margin-bottom: 1.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.3rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #004aad;
+            outline: none;
+        }
+
+        button {
+            margin-top: 1.5rem;
+            padding: 0.7rem;
+            background-color: #004aad;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #0066ff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hostel Management System</h1>
+    </header>
+
+    <div class="container">
+        <h2>Vacant Room Application</h2>
+        <form id="vacantForm">
+            <label>Full Name:
+                <input type="text" name="name" required>
+            </label>
+
+            <label>Roll Number:
+                <input type="text" name="roll" required>
+            </label>
+
+            <label>Current Room Number:
+                <input type="text" name="current_room" required>
+            </label>
+
+            <label>Hostel Name:
+                <input type="text" name="hostel" required>
+            </label>
+
+            <label>Reason for Vacating:
+                <textarea name="reason" required></textarea>
+            </label>
+
+            <label>Expected Vacating Date:
+                <input type="date" name="date" required>
+            </label>
+
+            <label>Requesting Room Transfer? 
+                <select name="transfer">
+                    <option>No, leaving hostel</option>
+                    <option>Yes, request room transfer</option>
+                </select>
+            </label>
+
+            <label>Additional Remarks:
+                <textarea name="remarks"></textarea>
+            </label>
+            <label>New_room:
+                <input type="text" name="new_room" required>
+            </label>
+            
+
+            <button type="button" onclick="submitVacant()">Submit Application</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2025 Hostel Management System. All rights reserved.
+    </footer>
+
+    <script>
+        function submitVacant() {
+            const form = document.getElementById('vacantForm');
+            const formData = new FormData(form);
+            fetch('backend/submit_vacant.php', { method: 'POST', body: formData })
+                .then(response => response.text())
+                .then(text => alert(text))
+                .catch(error => alert('Error: ' + error));
+        }
+    </script>
+</body>
+</html>

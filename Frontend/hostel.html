@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hostel Admission Form | Hostel Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004aad;
+      color: #fff;
+      text-align: center;
+      padding: 25px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #004aad;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: #333;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-top: 6px;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #004aad;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 74, 173, 0.3);
+    }
+
+    button {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0066ff;
+      transform: scale(1.02);
+    }
+
+    footer {
+      text-align: center;
+      background-color: #004aad;
+      color: #fff;
+      padding: 15px 0;
+      margin-top: 80px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hostel Management System</h1>
+  </header>
+
+  <main>
+    <h2>Hostel Admission Form</h2>
+    <form id="admissionForm">
+      <label>Full Name:
+        <input type="text" name="name" required>
+      </label>
+
+      <label>Roll Number:
+        <input type="text" name="roll" required>
+      </label>
+
+      <label>Course:
+        <select name="course">
+          <option>B.Tech</option>
+          <option>M.Tech</option>
+          <option>MBA</option>
+          <option>MCA</option>
+        </select>
+      </label>
+
+      <label>Year:
+        <select name="year">
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+        </select>
+      </label>
+     <label>Gender:
+        <select name="Gender">
+          <option>Female</option>
+          <option>Male</option>
+        </select>
+      </label>
+      <label>Permanent Address:
+        <textarea name="address" rows="3" required></textarea>
+      </label>
+
+      <label>Parent Name:
+        <input type="text" name="parent_name" required>
+      </label>
+
+      <label>Contact Number:
+        <input type="tel" name="contact" required>
+      </label>
+
+      <label>Medical Certificate:
+        <input type="file" name="medical">
+      </label>
+
+      <label>Anti-Ragging Affidavit:
+        <input type="file" name="affidavit">
+      </label>
+
+      <button type="button" onclick="submitAdmission()">Submit Application</button>
+    </form>
+  </main>
+
+  <footer>
+    © 2025 Hostel Management System | All Rights Reserved
+  </footer>
+
+  <script>
+    function submitAdmission() {
+      const form = document.getElementById('admissionForm');
+      const formData = new FormData(form);
+      fetch('backend/submit_admission.php', { method: 'POST', body: formData })
+        .then(response => response.text())
+        .then(text => alert(text))
+        .catch(error => alert('Error: ' + error));
+    }
+  </script>
+
+</body>
+</html>

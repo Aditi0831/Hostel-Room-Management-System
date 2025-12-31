@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard | Hostel Management System</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #004aad;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+    .logout-btn {
+      background-color: #ff4757;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .logout-btn:hover {
+      background-color: #ff6b81;
+    }
+    main {
+      max-width: 800px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    h2 {
+      color: #004aad;
+      margin-bottom: 25px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    li {
+      background-color: #004aad;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+    li:hover {
+      background-color: #0066ff;
+      transform: scale(1.03);
+    }
+    a {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hostel Management System</h1>
+    <div class="user-info">
+      Welcome, <strong><?php echo htmlspecialchars($username); ?></strong>
+      <form action="logout.php" method="POST" style="display:inline;">
+        <button class="logout-btn" type="submit">Logout</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <h2>Student Dashboard</h2>
+    <ul>
+      <li><a href="../hostel.html">Hostel Application</a></li>
+      <li><a href="../Complaints.html">Complaints</a></li>
+      <li><a href="../roomdetail.html">Room Detail</a></li>
+      <li><a href="../fee.html">Room / Mess Fee</a></li>
+      <li><a href="../vacant.html">Vacant Request</a></li>
+      <li><a href="../leave.html">Leave Application</a></li>
+      <li><a href="../check_leave.html">Check Leave Status</a></li>
+      <li><a href="../check_status.html">Check Vacant Room Status</a></li>
+      <li><a href="../studentdetail.html">Student Detail</a></li>
+      <li><a href="../student_check_status.html">check status of admission form</a></li>
+    </ul>
+  </main>
+
+</body>
+</html>
+
+``

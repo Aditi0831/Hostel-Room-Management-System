@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warden Dashboard | Hostel Management System</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f4f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #004aad;
+            color: white;
+            text-align: center;
+            padding: 1.2rem 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .logout-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background-color: white;
+            color: #004aad;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #e8efff;
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        h1 {
+            color: #004aad;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        li {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        a {
+            text-decoration: none;
+            color: #004aad;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        a:hover {
+            color: #0066ff;
+        }
+
+        footer {
+            background-color: #004aad;
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            font-size: 13px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Hostel Management System - Warden Dashboard
+        <form action="backend/warden_logout.php" method="POST" style="display:inline;">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </header>
+
+    <div class="dashboard-container">
+        <h1>Welcome, Warden</h1>
+        <ul>
+            <li><a href="backend/view_applications.php">📑 Hostel Applications</a></li>
+            <li><a href="view_complaints.html">📋 View Complaints</a></li>
+            <li><a href="view_fees.html">💰 View Fee Submissions</a></li>
+            <li><a href="view_leaves.html">📝 Approve Leaves</a></li>
+            <li><a href="view_students.html">👩‍🎓 View Student Details</a></li>
+            <li><a href="manage_rooms.html">🏠 Manage Rooms</a></li>
+            <li><a href="view_vacants.html">🚪 View Vacant Requests</a></li>
+            <li><a href="warden_allot_room.html">🛏️ Allot Room</a></li>
+        </ul>
+    </div>
+
+    <footer>© 2025 Hostel Management System | All Rights Reserved</footer>
+
+</body>
+</html>
+

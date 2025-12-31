@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration | Hostel Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004aad;
+      color: #fff;
+      text-align: center;
+      padding: 25px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 400px;
+      margin: 70px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #004aad;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #004aad;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0066ff;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      text-decoration: none;
+      color: #004aad;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #004aad;
+      color: #fff;
+      padding: 15px 0;
+      margin-top: 80px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      main {
+        margin: 40px 20px;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hostel Management System</h1>
+  </header>
+
+  <main>
+    <h2>Student Registration</h2>
+    <form id="registerForm">
+      <label>Username:
+        <input type="text" name="username" required>
+      </label>
+      <label>E-mail:
+        <input type="email" name="email" required>
+      </label>
+      <label>Password:
+        <input type="password" name="password" required>
+      </label>
+      <button type="button" onclick="register()">Register</button>
+    </form>
+    <a href="studentloginpage.html">Back to Login</a>
+  </main>
+
+  <footer>
+    © 2025 Hostel Management System | All Rights Reserved
+  </footer>
+
+  <script>
+    function register() {
+      const form = document.getElementById('registerForm');
+      const formData = new FormData(form);
+      fetch('backend/student_register.php', { method: 'POST', body: formData })
+        .then(response => response.text())
+        .then(text => alert(text))
+        .catch(error => alert('Error: ' + error));
+    }
+  </script>
+
+</body>
+</html>

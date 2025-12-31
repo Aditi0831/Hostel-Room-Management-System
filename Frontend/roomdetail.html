@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Room Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef3f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h2 { text-align: center; }
+    p { margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Room Details</h2>
+    <div id="details">Loading...</div>
+  </div>
+
+  <script>
+    const rollNumber = localStorage.getItem('roll_number') || prompt("Enter your Roll Number:");
+
+    fetch(`backend/fetch_room_detail.php?roll=${rollNumber}`)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('details').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('details').innerText = "Error fetching details.";
+      });
+  </script>
+</body>
+</html>
+

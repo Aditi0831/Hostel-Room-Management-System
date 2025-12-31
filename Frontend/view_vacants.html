@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Vacant Room Requests</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      padding: 30px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background: #007bff;
+      color: white;
+    }
+    button {
+      padding: 6px 12px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      border-radius: 5px;
+    }
+    .approve {
+      background-color: #28a745;
+    }
+    .reject {
+      background-color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <h2>View Vacant Room Requests</h2>
+  <table id="vacantTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Roll</th>
+        <th>Name</th>
+        <th>Hostel</th>
+        <th>Current Room</th>
+        <th>New Room</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    function loadVacants() {
+      fetch('backend/get_vacants.php')
+        .then(response => response.text())
+        .then(data => {
+          document.querySelector('#vacantTable tbody').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading data:', error));
+    }
+
+    function updateStatus(id, status) {
+      const formData = new URLSearchParams();
+      formData.append('id', id);
+      formData.append('status', status);
+
+      fetch('backend/get_vacants.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: formData.toString()
+      })
+      .then(() => loadVacants());
+    }
+
+    window.onload = loadVacants;
+  </script>
+</body>
+</html>
+
+
+
+

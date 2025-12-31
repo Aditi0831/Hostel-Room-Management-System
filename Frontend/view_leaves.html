@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Leave Applications</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f0f6ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004aad;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #004aad;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .leave-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .leave-card strong {
+      color: #004aad;
+    }
+
+    button {
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .approve-btn {
+      background-color: #009900;
+      color: white;
+    }
+
+    .approve-btn:hover {
+      background-color: #00b300;
+    }
+
+    .reject-btn {
+      background-color: #cc0000;
+      color: white;
+    }
+
+    .reject-btn:hover {
+      background-color: #e60000;
+    }
+
+    .approved {
+      background-color: #00cc66;
+      color: white;
+      cursor: not-allowed;
+    }
+
+    .rejected {
+      background-color: #ff4d4d;
+      color: white;
+      cursor: not-allowed;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hostel Management System</h1>
+  </header>
+
+  <div class="container">
+    <h2>Leave Applications</h2>
+    <div id="leaveList">Loading...</div>
+  </div>
+
+  <footer>
+    &copy; 2025 Hostel Management System. All rights reserved.
+  </footer>
+
+  <script>
+    function fetchLeaves() {
+      fetch('backend/get_leaves.php')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('leaveList').innerHTML = data;
+        })
+        .catch(error => {
+          document.getElementById('leaveList').innerHTML = 'Error loading data.';
+        });
+    }
+
+    function approveLeave(id, status) {
+      if (confirm('Are you sure you want to update this leave status?')) {
+        fetch('backend/approve_leave.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: 'id=' + id + '&status=' + status
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert(data);
+          fetchLeaves(); // refresh list after approval/rejection
+        });
+      }
+    }
+
+    // Load data when page opens
+    window.onload = fetchLeaves;
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Details</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f2f6fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      background: #fff;
+      margin: 60px auto;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0d47a1;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      color: #333;
+      margin-top: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 80px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0d47a1;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Student Details</h2>
+    <form id="detailForm">
+      <label>Name:
+        <input type="text" name="name" required>
+      </label>
+
+      <label>Mother's Name:
+        <input type="text" name="mother_name" required>
+      </label>
+
+      <label>Date of Birth:
+        <input type="date" name="dob" required>
+      </label>
+
+      <label>Address:
+        <textarea name="address" required></textarea>
+      </label>
+
+      <label>Mother's Phone:
+        <input type="tel" name="mother_phone" required>
+      </label>
+
+      <label>Father Name:
+        <input type="text" name="father_name" required>
+      </label>
+
+      <label>Father's Phone:
+        <input type="tel" name="father_phone" required>
+      </label>
+      <label>ROLL NUMBER:
+        <input type="text" name="roll" required>
+      </label>
+
+
+      <button type="button" onclick="updateDetails()">Update Details</button>
+    </form>
+  </div>
+
+  <footer>© 2025 Hostel Management System | All Rights Reserved</footer>
+
+  <script>
+    function updateDetails() {
+      const form = document.getElementById('detailForm');
+      const formData = new FormData(form);
+
+      fetch('backend/update_student_details.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(text => alert(text))
+      .catch(error => alert('Error: ' + error));
+    }
+  </script>
+
+</body>
+</html>

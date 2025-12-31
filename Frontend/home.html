@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Management System</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004aad;
+      color: #fff;
+      text-align: center;
+      padding: 25px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 40px 60px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #004aad;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin: 10px 0 25px 20px;
+      line-height: 1.8;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      background-color: #004aad;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0066ff;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #004aad;
+      color: #fff;
+      padding: 15px 0;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 25px;
+      }
+
+      .button-container {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hostel Management System</h1>
+  </header>
+
+  <main>
+    <h2>Welcome</h2>
+    <p>
+      The Hostel Management System is designed to simplify and automate hostel operations. 
+      It provides an efficient platform for managing student accommodation, room allocation, 
+      and administrative tasks.
+    </p>
+
+    <p>
+      Our system ensures transparency and convenience for both students and wardens, 
+      helping to maintain an organized and secure hostel environment.
+    </p>
+
+    <ul>
+      <li>Separate hostels for boys and girls</li>
+      <li>Comfortable two- and three-seater rooms</li>
+      <li>Mess, Wi-Fi, and recreation facilities</li>
+      <li>Online access for students and wardens</li>
+    </ul>
+
+    <div class="button-container">
+      <button onclick="window.location.href='studentloginpage.html'">Student Portal</button>
+      <button onclick="window.location.href='wardenloginpage.html'">Warden Portal</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Hostel Management System | All Rights Reserved
+  </footer>
+
+</body>
+</html>
+
